@@ -1,0 +1,50 @@
+$element-background: white;
+$font-color: gray;
+
+body {
+	font-family: 'Source Sans Pro', sans-serif;
+	background-image: url("wallpaper.jpg");
+	background-repeat: no-repeat;
+    background-attachment: fixed;
+    /* The cover property fills the window regarless of its size... it changes image's size automatically. */
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+.container {
+	margin: 0 auto;
+	width: 100%;
+	max-width: 900px;
+	position: relative;
+}
+@mixin basic {
+	background-color: $element-background;
+	opacity: 0.85;
+	color: $font-color;
+	padding: 15px;
+	margin: 15px;
+}
+.header {
+	@include basic;
+}
+.search-div {
+	@include basic;
+}
+.footer {
+	@include basic;
+	padding: 5px;
+	margin: 0 auto;
+	font-size: 0.75em;
+	width: 100%;
+	p, a, div, ul, li, a {
+		margin: 2px;
+	}
+	a {
+		color: $font-color;
+	}
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+	}
+}
