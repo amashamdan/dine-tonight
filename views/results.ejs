@@ -12,8 +12,13 @@
 			<h2>DINE TONIGHT</h2>
 			<p>Plan your dinner with your friends</p>
 		</div>
-		<div class="search-div">
-			RESULT
+		<div class="results-div">
+			<% if (results) { %>
+				<p>There are some</p>
+			<% } else if (errorText) { %>
+				<p>OK... There seems to be a problem... Propably you live at the end of the world... We suggest you move to another city! Anyway, here is what our machines are telling us:</p>
+				<li><%= errorText %></li>
+			<% } %>
 		</div>
 		<!-- Footer section. -->
 		<div class="footer">
