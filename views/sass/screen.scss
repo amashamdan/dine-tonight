@@ -35,6 +35,14 @@ body {
 		cursor: pointer;
 	}
 }
+.result {
+	border: 1px solid gray;
+	display: none;
+	margin: 15px 5px 0 5px;
+	img {
+		width: 70px;
+	}
+}
 .results-div {
 	@include basic;
 	font-size: 0.9em;

@@ -19,6 +19,17 @@ body {
 }
 
 /* line 38, ../sass/screen.scss */
+.result {
+  border: 1px solid gray;
+  display: none;
+  margin: 15px 5px 0 5px;
+}
+/* line 42, ../sass/screen.scss */
+.result img {
+  width: 70px;
+}
+
+/* line 46, ../sass/screen.scss */
 .results-div {
   background-color: white;
   opacity: 0.8;
@@ -28,7 +39,7 @@ body {
   font-size: 0.9em;
 }
 
-/* line 42, ../sass/screen.scss */
+/* line 50, ../sass/screen.scss */
 .button {
   border: none;
   padding: 5px;
@@ -41,7 +52,7 @@ body {
   cursor: pointer;
 }
 
-/* line 47, ../sass/screen.scss */
+/* line 55, ../sass/screen.scss */
 .header {
   background-color: white;
   opacity: 0.8;
@@ -52,17 +63,17 @@ body {
   flex-wrap: wrap;
   justify-content: space-between;
 }
-/* line 52, ../sass/screen.scss */
+/* line 60, ../sass/screen.scss */
 .header h2 {
   margin: 0;
 }
-/* line 55, ../sass/screen.scss */
+/* line 63, ../sass/screen.scss */
 .header p {
   font-style: italic;
   font-size: 0.8em;
 }
 
-/* line 60, ../sass/screen.scss */
+/* line 68, ../sass/screen.scss */
 .search-div {
   background-color: white;
   opacity: 0.8;
@@ -72,17 +83,17 @@ body {
   text-align: center;
 }
 
-/* line 64, ../sass/screen.scss */
+/* line 72, ../sass/screen.scss */
 #search-input {
   padding: 4px;
 }
 
-/* line 67, ../sass/screen.scss */
+/* line 75, ../sass/screen.scss */
 .radio {
   margin-top: 10px;
 }
 
-/* line 70, ../sass/screen.scss */
+/* line 78, ../sass/screen.scss */
 .footer {
   background-color: white;
   opacity: 0.8;
@@ -92,15 +103,15 @@ body {
   padding: 5px;
   font-size: 0.75em;
 }
-/* line 74, ../sass/screen.scss */
+/* line 82, ../sass/screen.scss */
 .footer p, .footer a, .footer div, .footer ul, .footer li, .footer a {
   margin: 2px;
 }
-/* line 77, ../sass/screen.scss */
+/* line 85, ../sass/screen.scss */
 .footer a {
   color: gray;
 }
-/* line 80, ../sass/screen.scss */
+/* line 88, ../sass/screen.scss */
 .footer ul {
   display: flex;
   flex-wrap: wrap;
@@ -108,20 +119,20 @@ body {
 }
 
 @media screen and (max-width: 400px) {
-  /* line 89, ../sass/screen.scss */
+  /* line 97, ../sass/screen.scss */
   .header h2, .header p {
     font-size: 0.8em;
   }
 
-  /* line 93, ../sass/screen.scss */
+  /* line 101, ../sass/screen.scss */
   .search-div {
     font-size: 0.8em;
   }
-  /* line 95, ../sass/screen.scss */
+  /* line 103, ../sass/screen.scss */
   .search-div input {
     width: 100px;
   }
-  /* line 98, ../sass/screen.scss */
+  /* line 106, ../sass/screen.scss */
   .search-div button {
     width: 55px;
     font-size: 0.8em;
