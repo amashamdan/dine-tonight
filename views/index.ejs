@@ -15,26 +15,29 @@
 		<div class="search-div">
 			<h3>Start Here</h3>
 			<p>To look for restaurents in your area, enter your location or click "Find me"</p>
-			<form id="search-form">
-				<input placeholder="Enter Location" id="search-input">
+			<form id="search-form" method="post" action="/results">
+				<input placeholder="Enter Location" type="text" id="search-input" name="location">
 				<button type="submit" class="button">Search</button>
-				<button class="button">Find me</button> 
+				<button class="button">Find me</button><br/>
+				<input type="radio" name="sorting" value="2" class="radio">Find Best
+				<input type="radio" name="sorting" value="1" class="radio">Find Closest
 			</form>
 		</div>
 		<!-- Footer section. -->
-	</div>
-	<div class="footer">
-		<div class="author">
-			<p>Page by Amer Hamdan (email:<a href="mailto:amashamdan@gmail.com"> amashamdan@gmail.com</a>)</p>
-			<p>Visit my pages:</p>
-			<ul class="pages">
-				<li><a href="http://amashamdan.github.io/P1-portfolio/" target="blank">Portfolio</a></li>
-				<li><a href="https://www.linkedin.com/in/amerhamdan" target="blank">Linkedin</a></li>
-				<li><a href="https://github.com/amashamdan" target="blank">Github</a></li>
-				<li><a href="http://codepen.io/amashamdan/" target="blank">CodePen</a></li>
-			</ul>
-			<span style="font-size:0.7em">Copyright © Dine Tonight 2016. All Rights Reserved</span>
+		<div class="footer">
+			<div class="author">
+				<p>Page by Amer Hamdan (email:<a href="mailto:amashamdan@gmail.com"> amashamdan@gmail.com</a>)</p>
+				<p>Visit my pages:</p>
+				<ul class="pages">
+					<li><a href="http://amashamdan.github.io/P1-portfolio/" target="blank">Portfolio</a></li>
+					<li><a href="https://www.linkedin.com/in/amerhamdan" target="blank">Linkedin</a></li>
+					<li><a href="https://github.com/amashamdan" target="blank">Github</a></li>
+					<li><a href="http://codepen.io/amashamdan/" target="blank">CodePen</a></li>
+				</ul>
+				<span style="font-size:0.7em">Copyright © Dine Tonight 2016. All Rights Reserved</span>
+			</div>
 		</div>
 	</div>
+
 	<script src="scripts/index.js"></script>
 </body>
