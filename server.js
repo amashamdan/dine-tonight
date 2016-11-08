@@ -31,17 +31,38 @@ MongoClient.connect(mongoUrl, function(err, db) {
 		});
 
 		app.post("/results", parser, function(req, res) {
-			var sorting = Number(req.body.sorting);
+			if (req.body.sorting) {
+				var sorting = Number(req.body.sorting);
+			} else {
+				var sorting = 1;
+			}
+			
 			yelp.search({
 				term: "restaurant", 
 				location: req.body.location,
 				limit: 20,
 				sort: sorting
 			}).then(function(data) {
-				res.send(data);
-				res.end();
+				var results = [];
+				for (var item in data.businesses) {
+					var business = {};
+					business.name = data.businesses[item].name;
+					business.rating = data.businesses[item].rating;
+					business.reviews = data.businesses[item].review_count;
+					business.url = data.businesses[item].url;
+					business.phone = data.businesses[item].phone;
+					business.snippet = data.businesses[item].snippet_text;
+					business.image = data.businesses[item].image_url;
+					business.status = data.businesses[item].is_closed;
+					business.address = data.businesses[item].location.display_address;
+					business.categories = data.businesses[item].categories;
+					results.push(business);
+				}
+				res.render("results.ejs", {results: results, error: undefined});
+			}).catch(function(err) {
+				var errorText = JSON.parse(err.data).error.text;
+				res.render("results.ejs", {results: undefined, errorText: errorText});
 			});
-			//res.render("results.ejs")
 		});
 	}
 });
