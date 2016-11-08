@@ -1,4 +1,10 @@
 $(document).ready(function() {
-	var positionTop = $(window).height() - $(".footer").height();
-	$(".footer").css({"position": "fixed", "top": positionTop});
+	$("#search-form").submit(function(e) {
+		e.preventDefault();
+		if ($("#search-input").val() == "") {
+			alert("Please enter a location");
+		} else {
+			e.target.submit();
+		}
+	})
 });
