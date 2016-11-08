@@ -35,6 +35,10 @@ body {
 		cursor: pointer;
 	}
 }
+.results-div {
+	@include basic;
+	font-size: 0.9em;
+}
 .button {
 	@include button;
 	background-color: $button-color-generic;

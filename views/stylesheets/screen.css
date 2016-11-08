@@ -19,6 +19,16 @@ body {
 }
 
 /* line 38, ../sass/screen.scss */
+.results-div {
+  background-color: white;
+  opacity: 0.8;
+  color: gray;
+  padding: 15px;
+  margin: 15px;
+  font-size: 0.9em;
+}
+
+/* line 42, ../sass/screen.scss */
 .button {
   border: none;
   padding: 5px;
@@ -31,7 +41,7 @@ body {
   cursor: pointer;
 }
 
-/* line 43, ../sass/screen.scss */
+/* line 47, ../sass/screen.scss */
 .header {
   background-color: white;
   opacity: 0.8;
@@ -42,17 +52,17 @@ body {
   flex-wrap: wrap;
   justify-content: space-between;
 }
-/* line 48, ../sass/screen.scss */
+/* line 52, ../sass/screen.scss */
 .header h2 {
   margin: 0;
 }
-/* line 51, ../sass/screen.scss */
+/* line 55, ../sass/screen.scss */
 .header p {
   font-style: italic;
   font-size: 0.8em;
 }
 
-/* line 56, ../sass/screen.scss */
+/* line 60, ../sass/screen.scss */
 .search-div {
   background-color: white;
   opacity: 0.8;
@@ -62,17 +72,17 @@ body {
   text-align: center;
 }
 
-/* line 60, ../sass/screen.scss */
+/* line 64, ../sass/screen.scss */
 #search-input {
   padding: 4px;
 }
 
-/* line 63, ../sass/screen.scss */
+/* line 67, ../sass/screen.scss */
 .radio {
   margin-top: 10px;
 }
 
-/* line 66, ../sass/screen.scss */
+/* line 70, ../sass/screen.scss */
 .footer {
   background-color: white;
   opacity: 0.8;
@@ -82,15 +92,15 @@ body {
   padding: 5px;
   font-size: 0.75em;
 }
-/* line 70, ../sass/screen.scss */
+/* line 74, ../sass/screen.scss */
 .footer p, .footer a, .footer div, .footer ul, .footer li, .footer a {
   margin: 2px;
 }
-/* line 73, ../sass/screen.scss */
+/* line 77, ../sass/screen.scss */
 .footer a {
   color: gray;
 }
-/* line 76, ../sass/screen.scss */
+/* line 80, ../sass/screen.scss */
 .footer ul {
   display: flex;
   flex-wrap: wrap;
@@ -98,20 +108,20 @@ body {
 }
 
 @media screen and (max-width: 400px) {
-  /* line 85, ../sass/screen.scss */
+  /* line 89, ../sass/screen.scss */
   .header h2, .header p {
     font-size: 0.8em;
   }
 
-  /* line 89, ../sass/screen.scss */
+  /* line 93, ../sass/screen.scss */
   .search-div {
     font-size: 0.8em;
   }
-  /* line 91, ../sass/screen.scss */
+  /* line 95, ../sass/screen.scss */
   .search-div input {
     width: 100px;
   }
-  /* line 94, ../sass/screen.scss */
+  /* line 98, ../sass/screen.scss */
   .search-div button {
     width: 55px;
     font-size: 0.8em;
