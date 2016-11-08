@@ -1,9 +1,12 @@
 $element-background: white;
 $font-color: gray;
+$button-color-generic: #9D8597;
+$go-color: #0F7173;
+$cancel-color: #F05D5E;
 
 body {
 	font-family: 'Source Sans Pro', sans-serif;
-	background-image: url("wallpaper.jpg");
+	background-image: url("wallpaper2.jpg");
 	background-repeat: no-repeat;
     background-attachment: fixed;
     /* The cover property fills the window regarless of its size... it changes image's size automatically. */
@@ -19,16 +22,43 @@ body {
 }
 @mixin basic {
 	background-color: $element-background;
-	opacity: 0.85;
+	opacity: 0.8;
 	color: $font-color;
 	padding: 15px;
 	margin: 15px;
 }
+@mixin button {
+	border: none;
+	padding: 5px;
+	width: 75px;
+	&:hover {
+		cursor: pointer;
+	}
+}
+.button {
+	@include button;
+	background-color: $button-color-generic;
+	color: $element-background; 
+}
 .header {
 	@include basic;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	h2 {
+		margin: 0;
+	}
+	p {
+		font-style: italic;
+		font-size: 0.8em;
+	}
 }
 .search-div {
 	@include basic;
+	text-align: center;
+}
+#search-input {
+	padding: 4px;
 }
 .footer {
 	@include basic;
@@ -46,5 +76,23 @@ body {
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-around;
+	}
+}
+
+@media screen and (max-width: 400px) {
+	.header {
+		h2, p {
+			font-size: 0.8em;
+		}
+	}
+	.search-div {
+		font-size: 0.8em;
+		input {
+			width: 100px;
+		}
+		button {
+			width: 55px;
+			font-size: 0.8em;
+		}
 	}
 }
