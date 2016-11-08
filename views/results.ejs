@@ -14,7 +14,18 @@
 		</div>
 		<div class="results-div">
 			<% if (results) { %>
-				<p>There are some</p>
+				<p>Here is what our machines found for you. Hope you find something you like!</p>
+				<% for (var item in results) { %>
+					<div class="result" id=<%- JSON.stringify(results[item].name) %>>
+						<img src=<%= results[item].image %>>
+						<p><%= results[item].name %></p>
+						<p>Rating: <%= results[item].rating %> (<%= results[item].reviews %> reviews)</p>
+						<button class="button">Expand information</button>
+						<div class="more-info">
+
+						</div>
+					</div>
+				<% } %>
 			<% } else if (errorText) { %>
 				<p>OK... There seems to be a problem... Propably you live at the end of the world... We suggest you move to another city! Anyway, here is what our machines are telling us:</p>
 				<li><%= errorText %></li>
@@ -36,5 +47,5 @@
 		</div>
 	</div>
 	
-	<script src="scripts/index.js"></script>
+	<script src="scripts/results.js"></script>
 </body>
