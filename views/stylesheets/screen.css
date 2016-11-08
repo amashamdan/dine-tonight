@@ -68,6 +68,11 @@ body {
 }
 
 /* line 63, ../sass/screen.scss */
+.radio {
+  margin-top: 10px;
+}
+
+/* line 66, ../sass/screen.scss */
 .footer {
   background-color: white;
   opacity: 0.8;
@@ -75,19 +80,17 @@ body {
   padding: 15px;
   margin: 15px;
   padding: 5px;
-  margin: 0 auto;
   font-size: 0.75em;
-  width: 100%;
 }
-/* line 69, ../sass/screen.scss */
+/* line 70, ../sass/screen.scss */
 .footer p, .footer a, .footer div, .footer ul, .footer li, .footer a {
   margin: 2px;
 }
-/* line 72, ../sass/screen.scss */
+/* line 73, ../sass/screen.scss */
 .footer a {
   color: gray;
 }
-/* line 75, ../sass/screen.scss */
+/* line 76, ../sass/screen.scss */
 .footer ul {
   display: flex;
   flex-wrap: wrap;
@@ -95,20 +98,20 @@ body {
 }
 
 @media screen and (max-width: 400px) {
-  /* line 84, ../sass/screen.scss */
+  /* line 85, ../sass/screen.scss */
   .header h2, .header p {
     font-size: 0.8em;
   }
 
-  /* line 88, ../sass/screen.scss */
+  /* line 89, ../sass/screen.scss */
   .search-div {
     font-size: 0.8em;
   }
-  /* line 90, ../sass/screen.scss */
+  /* line 91, ../sass/screen.scss */
   .search-div input {
     width: 100px;
   }
-  /* line 93, ../sass/screen.scss */
+  /* line 94, ../sass/screen.scss */
   .search-div button {
     width: 55px;
     font-size: 0.8em;

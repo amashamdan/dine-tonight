@@ -60,12 +60,13 @@ body {
 #search-input {
 	padding: 4px;
 }
+.radio {
+	margin-top: 10px;
+}
 .footer {
 	@include basic;
 	padding: 5px;
-	margin: 0 auto;
 	font-size: 0.75em;
-	width: 100%;
 	p, a, div, ul, li, a {
 		margin: 2px;
 	}
