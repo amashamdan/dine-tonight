@@ -55,7 +55,6 @@ MongoClient.connect(mongoUrl, function(err, db) {
 					business.image = data.businesses[item].image_url;
 					business.status = data.businesses[item].is_closed;
 					business.address = data.businesses[item].location.display_address;
-					business.categories = data.businesses[item].categories;
 					results.push(business);
 				}
 				res.render("results.ejs", {results: results, error: undefined});
