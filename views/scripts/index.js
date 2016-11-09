@@ -11,7 +11,7 @@ $(document).ready(function() {
 		e.preventDefault();
 
 		/* Location lookup using ipinfo api */
-		$.getJSON('http://ipinfo.io', function(data){
+		$.getJSON('http://ipinfo.io?callback=?', function(data){
 			/* The location is stored in the variable location. */
 			console.log(data);
 			var location = data.city + " " + data.region;
