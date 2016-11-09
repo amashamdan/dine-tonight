@@ -3,6 +3,7 @@ $font-color: gray;
 $button-color-generic: #9D8597;
 $go-color: #0F7173;
 $cancel-color: #F05D5E;
+$more-info-background: #0F7173;
 
 body {
 	font-family: 'Source Sans Pro', sans-serif;
@@ -13,6 +14,7 @@ body {
     background-size: cover;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 .container {
 	margin: 0 auto;
@@ -22,7 +24,6 @@ body {
 }
 @mixin basic {
 	background-color: $element-background;
-	opacity: 0.8;
 	color: $font-color;
 	padding: 15px;
 	margin: 15px;
@@ -39,21 +40,75 @@ body {
 	border: 1px solid gray;
 	display: none;
 	margin: 15px 5px 0 5px;
+	height: 70px;
 	img {
 		width: 70px;
+		height: 70px;
+		margin-right: 15px;
 	}
+	.flex-wrapper {
+		margin: 0;
+	}
+	p {
+		margin: 10px 0 10px 0;
+	}
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.flex-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	a {
+		color: $font-color;
+		text-decoration: none;
+	}
+}
+.more-info {
+	display: none;
+	width: 100%;
+	background-color: $more-info-background;
+	color: $element-background;
+	position: relative;
+	z-index: 6;
+	padding: 20px;
+	a {
+		color: $element-background;
+	}
+	border-radius: 5px;
+	border: 1px solid black; 
+	font-size: 0.9em;
 }
 .results-div {
 	@include basic;
 	font-size: 0.9em;
+	display: none;
+	z-index: 3;
 }
 .button {
 	@include button;
 	background-color: $button-color-generic;
 	color: $element-background; 
 }
+.will-go {
+	@include button;
+	width: 120px;
+	font-size: 0.85em;
+	background-color: $go-color;
+	color: $element-background;
+	margin: 5px; 
+}
+.more-info-button {
+	@include button;
+	width: 120px;
+	font-size: 0.85em;
+	background-color: $button-color-generic;
+	color: $element-background;
+	margin: 5px;
+}
 .header {
 	@include basic;
+	opacity: 0.8;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
@@ -67,6 +122,7 @@ body {
 }
 .search-div {
 	@include basic;
+	opacity: 0.8;
 	text-align: center;
 }
 #search-input {
@@ -78,6 +134,7 @@ body {
 .footer {
 	@include basic;
 	padding: 5px;
+	opacity: 0.8;
 	font-size: 0.75em;
 	p, a, div, ul, li, a {
 		margin: 2px;
@@ -90,6 +147,8 @@ body {
 		flex-wrap: wrap;
 		justify-content: space-around;
 	}
+	position: relative;
+	z-index:1;
 }
 
 @media screen and (max-width: 400px) {
