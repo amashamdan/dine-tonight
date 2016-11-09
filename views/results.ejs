@@ -16,13 +16,29 @@
 			<% if (results) { %>
 				<p>Here is what our machines found for you. Hope you find something you like!</p>
 				<% for (var item in results) { %>
-					<div class="result" id=<%- JSON.stringify(results[item].name) %>>
-						<img src=<%= results[item].image %>>
-						<p><%= results[item].name %></p>
-						<p>Rating: <%= results[item].rating %> (<%= results[item].reviews %> reviews)</p>
-						<button class="button">Expand information</button>
+					<div class="result" id=<%= results[item].name %>>
+						<div class="flex-wrapper">
+							<img src=<%= results[item].image %>>
+							<div class="wrapper">
+								<a target="blank" href=<%- JSON.stringify(results[item].url) %>><p><%= results[item].name %></p></a>
+								<p>Rating: <%= results[item].rating %> <span style="font-size: 0.8em">(<%= results[item].reviews %> reviews)</span></p>
+							</div>
+						</div>
+						<div class="wrapper">
+							<button class="will-go">Action</button><br/>
+							<button class="more-info-button">Expand information</button>
+						</div>
+							
 						<div class="more-info">
-
+							<p><strong>A sample review:</strong> <span style="font-style: italic"><%= results[item].snippet %></span></p>
+							<p><strong>Phone: </strong><%= results[item].phone %></p>
+							<% if (!results[item].status) { %>
+								<p>NOW OPEN</p>
+							<% } else { %>
+								<p>NOW CLOSED</p>
+							<% } %>
+							<p><strong>Address: </strong><%= results[item].address %></p>
+							<p><a href=<%= results[item].url %> target="blank"><%= results[item].name %>'s page at Yelp!</a></p>
 						</div>
 					</div>
 				<% } %>
