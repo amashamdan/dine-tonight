@@ -60,6 +60,7 @@ MongoClient.connect(mongoUrl, function(err, db) {
 		res.end("Failed to connect to Database.")
 	} else {
 		var resultsGlobal = [];
+		var cityGlobal;
 		var restaurants = db.collection("restaurants");
 		app.get("/", function(req, res) {
 			res.render("index.ejs");
@@ -101,6 +102,7 @@ MongoClient.connect(mongoUrl, function(err, db) {
 					var user = undefined;
 				}
 				resultsGlobal = results;
+				cityGlobal = req.body.location;
 				res.render("results.ejs", {results: results, error: undefined, user: user});
 			}).catch(function(err) {
 				var errorText = JSON.parse(err.data).error.text;
@@ -108,16 +110,15 @@ MongoClient.connect(mongoUrl, function(err, db) {
 			});
 		});
 
-		app.get("/qaz", function(req, res) {
-			console.log("HI")
-			/*restaurants.update(
-				{"name": req.params.name},
-				{"$inc": {"count": 1}},
+		app.get("/action/:name", function(req, res) {
+			restaurants.update(
+				{"name": req.params.name, "city": cityGlobal},
+				{"$inc": {"count": 1}, "$push": {"people": req.user.displayName}},
 				{"upsert": true},
 				function () {
 					res.end("Entered");
 				}
-			);*/
+			);
 		});
 
 		var lastPage = "/";
