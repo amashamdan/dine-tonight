@@ -4,6 +4,7 @@ $button-color-generic: #9D8597;
 $go-color: #0F7173;
 $cancel-color: #F05D5E;
 $more-info-background: #0F7173;
+$facebook-color: #3B5998;
 
 body {
 	font-family: 'Source Sans Pro', sans-serif;
@@ -92,7 +93,7 @@ body {
 }
 .will-go {
 	@include button;
-	width: 120px;
+	width: 130px;
 	font-size: 0.85em;
 	background-color: $go-color;
 	color: $element-background;
@@ -100,11 +101,19 @@ body {
 }
 .more-info-button {
 	@include button;
-	width: 120px;
+	width: 130px;
 	font-size: 0.85em;
 	background-color: $button-color-generic;
 	color: $element-background;
 	margin: 5px;
+}
+.facebook {
+	@include button;
+	width: 130px;
+	font-size: 0.85em;
+	background-color: $facebook-color;
+	color: $element-background;
+	margin: 5px; 	
 }
 .header {
 	@include basic;
@@ -112,6 +121,10 @@ body {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
+	a {
+		text-decoration: none;
+		color: $font-color;
+	}
 	h2 {
 		margin: 0;
 	}
