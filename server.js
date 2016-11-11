@@ -1,4 +1,5 @@
 var express = require("express");
+var secure = require('express-force-https');
 var ejs = require("ejs");
 var mongodb = require("mongodb");
 var Yelp = require("yelp");
@@ -8,6 +9,7 @@ var bodyParser = require("body-parser");
 var parser = bodyParser.urlencoded({extended: false});
 
 var app = express();
+app.use(secure);
 var MongoClient = mongodb.MongoClient;
 var mongoUrl = process.env.NIGHTLIFE;
 
@@ -69,5 +71,5 @@ MongoClient.connect(mongoUrl, function(err, db) {
 
 
 // port 8080 used for localhost during development.
-var port = Number(process.env.PORT || 8080)
+var port = Number(process.env.PORT || 443)
 app.listen(port);
