@@ -11,17 +11,6 @@ var app = express();
 var MongoClient = mongodb.MongoClient;
 var mongoUrl = process.env.NIGHTLIFE;
 
-function requireHTTPS(req, res, next) {
-    if (!req.secure) {
-        //FYI this should work for local development as well
-        return res.redirect('https://' + req.get('host') + req.url);
-    }
-    next();
-}
-
-app.use(requireHTTPS);
-
-
 app.use("/stylesheets", express.static(__dirname + "/views/stylesheets"));
 app.use("/scripts", express.static(__dirname + "/views/scripts"));
 
