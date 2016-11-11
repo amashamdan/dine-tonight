@@ -16,6 +16,38 @@ var mongoUrl = process.env.NIGHTLIFE;
 app.use("/stylesheets", express.static(__dirname + "/views/stylesheets"));
 app.use("/scripts", express.static(__dirname + "/views/scripts"));
 
+passport.use(new Strategy({
+    clientID: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
+    /* Do not redirect to root. return root uses another function needed for authentication, that function cannot work with root. */
+    callbackURL: 'http://localhost:443/login/return'
+  },
+  function(accessToken, refreshToken, profile, cb) {
+  	/* Comments below from Passport example code. */
+    // In this example, the user's Facebook profile is supplied as the user
+    // record.  In a production-quality application, the Facebook profile should
+    // be associated with a user record in the application's database, which
+    // allows for account linking and authentication with other identity
+    // providers.
+    return cb(null, profile);
+  }));
+
+passport.serializeUser(function(user, cb) {
+  cb(null, user);
+});
+
+passport.deserializeUser(function(obj, cb) {
+  cb(null, obj);
+});
+
+app.use(require('morgan')('combined'));
+app.use(require('cookie-parser')());
+app.use(require('body-parser').urlencoded({ extended: true }));
+app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 var yelp = new Yelp({
 	consumer_key: process.env.CONSUMER_KEY,
 	consumer_secret: process.env.CONSUMER_SECRET,
@@ -27,9 +59,14 @@ MongoClient.connect(mongoUrl, function(err, db) {
 	if (err) {
 		res.end("Failed to connect to Database.")
 	} else {
-		var restaurents = db.collection("restaurents");
+		var resultsGlobal = [];
+		var restaurants = db.collection("restaurants");
 		app.get("/", function(req, res) {
 			res.render("index.ejs");
+		});
+
+		app.get("/results", function(req, res) {
+			res.render("results.ejs", {results: resultsGlobal, error: undefined, user: req.user});
 		});
 
 		app.post("/results", parser, function(req, res) {
@@ -38,7 +75,6 @@ MongoClient.connect(mongoUrl, function(err, db) {
 			} else {
 				var sorting = 1;
 			}
-			
 			yelp.search({
 				term: "restaurant", 
 				location: req.body.location,
@@ -59,12 +95,45 @@ MongoClient.connect(mongoUrl, function(err, db) {
 					business.address = data.businesses[item].location.display_address;
 					results.push(business);
 				}
-				res.render("results.ejs", {results: results, error: undefined});
+				if (req.user) {
+					var user = req.user;
+				} else {
+					var user = undefined;
+				}
+				resultsGlobal = results;
+				res.render("results.ejs", {results: results, error: undefined, user: user});
 			}).catch(function(err) {
 				var errorText = JSON.parse(err.data).error.text;
-				res.render("results.ejs", {results: undefined, errorText: errorText});
+				res.render("results.ejs", {results: undefined, errorText: errorText, user: undefined});
 			});
 		});
+
+		app.get("/qaz", function(req, res) {
+			console.log("HI")
+			/*restaurants.update(
+				{"name": req.params.name},
+				{"$inc": {"count": 1}},
+				{"upsert": true},
+				function () {
+					res.end("Entered");
+				}
+			);*/
+		});
+
+		var lastPage = "/";
+		function savePage(req, res, next) {
+			lastPage = req.header("Referer");
+			next();
+		}
+
+		app.get("/login", savePage, passport.authenticate('facebook'));
+
+		app.get('/login/return', passport.authenticate('facebook', { failureRedirect: '/' }), function(req, res) {
+    			/* redirects the user to the last page where the request originated from. */
+    			res.redirect(lastPage);
+  		});
+
+
 	}
 });
 
