@@ -67,7 +67,19 @@ MongoClient.connect(mongoUrl, function(err, db) {
 		});
 
 		app.get("/results", function(req, res) {
-			res.render("results.ejs", {results: resultsGlobal, error: undefined, user: req.user});
+			restaurants.find({"city": cityGlobal, "people": req.user.displayName}).toArray(function(err, items) {
+				for (var restaurant in resultsGlobal) {
+					resultsGlobal[restaurant].isGoing = false;
+				}
+				for (var item in items) {
+					for (var restaurant in resultsGlobal) {
+						if (resultsGlobal[restaurant].name == items[item].name) {
+							resultsGlobal[restaurant].isGoing = true;
+						} 
+					}
+				}
+				res.render("results.ejs", {results: resultsGlobal, error: undefined, user: req.user});
+			});
 		});
 
 		app.post("/results", parser, function(req, res) {
@@ -116,7 +128,7 @@ MongoClient.connect(mongoUrl, function(err, db) {
 				{"$inc": {"count": 1}, "$push": {"people": req.user.displayName}},
 				{"upsert": true},
 				function () {
-					res.end("Entered");
+					res.redirect("/results");
 				}
 			);
 		});
