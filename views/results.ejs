@@ -9,14 +9,14 @@
 <body>
 	<div class="container">
 		<div class="header">
-			<h2>DINE TONIGHT</h2>
+			<a href="/"><h2>DINE TONIGHT</h2></a>
 			<p>Plan your dinner with your friends</p>
 		</div>
 		<div class="results-div">
 			<% if (results) { %>
 				<p>Here is what our machines found for you. Hope you find something you like!</p>
 				<% for (var item in results) { %>
-					<div class="result" id=<%= results[item].name %>>
+					<div class="result" id=<%- JSON.stringify(results[item].name) %>>
 						<div class="flex-wrapper">
 							<img src=<%= results[item].image %>>
 							<div class="wrapper">
@@ -25,7 +25,9 @@
 							</div>
 						</div>
 						<div class="wrapper">
-							<button class="will-go">Action</button><br/>
+							<% if (!user) { %>
+								<a href="/login"><button class="facebook">Login to plan</button></a><br/>
+							<% } %>
 							<button class="more-info-button">Expand information</button>
 						</div>
 							
