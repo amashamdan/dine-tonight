@@ -99,6 +99,14 @@ body {
 	color: $element-background;
 	margin: 5px; 
 }
+.will-not-go {
+	@include button;
+	width: 130px;
+	font-size: 0.85em;
+	background-color: $cancel-color;
+	color: $element-background;
+	margin: 5px; 
+}
 .more-info-button {
 	@include button;
 	width: 130px;

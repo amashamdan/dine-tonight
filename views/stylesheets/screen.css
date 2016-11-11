@@ -114,6 +114,22 @@ body {
 }
 
 /* line 102, ../sass/screen.scss */
+.will-not-go {
+  border: none;
+  padding: 5px;
+  width: 75px;
+  width: 130px;
+  font-size: 0.85em;
+  background-color: #F05D5E;
+  color: white;
+  margin: 5px;
+}
+/* line 36, ../sass/screen.scss */
+.will-not-go:hover {
+  cursor: pointer;
+}
+
+/* line 110, ../sass/screen.scss */
 .more-info-button {
   border: none;
   padding: 5px;
@@ -129,7 +145,7 @@ body {
   cursor: pointer;
 }
 
-/* line 110, ../sass/screen.scss */
+/* line 118, ../sass/screen.scss */
 .facebook {
   border: none;
   padding: 5px;
@@ -145,7 +161,7 @@ body {
   cursor: pointer;
 }
 
-/* line 118, ../sass/screen.scss */
+/* line 126, ../sass/screen.scss */
 .header {
   background-color: white;
   color: gray;
@@ -156,22 +172,22 @@ body {
   flex-wrap: wrap;
   justify-content: space-between;
 }
-/* line 124, ../sass/screen.scss */
+/* line 132, ../sass/screen.scss */
 .header a {
   text-decoration: none;
   color: gray;
 }
-/* line 128, ../sass/screen.scss */
+/* line 136, ../sass/screen.scss */
 .header h2 {
   margin: 0;
 }
-/* line 131, ../sass/screen.scss */
+/* line 139, ../sass/screen.scss */
 .header p {
   font-style: italic;
   font-size: 0.8em;
 }
 
-/* line 136, ../sass/screen.scss */
+/* line 144, ../sass/screen.scss */
 .search-div {
   background-color: white;
   color: gray;
@@ -181,17 +197,17 @@ body {
   text-align: center;
 }
 
-/* line 141, ../sass/screen.scss */
+/* line 149, ../sass/screen.scss */
 #search-input {
   padding: 4px;
 }
 
-/* line 144, ../sass/screen.scss */
+/* line 152, ../sass/screen.scss */
 .radio {
   margin-top: 10px;
 }
 
-/* line 147, ../sass/screen.scss */
+/* line 155, ../sass/screen.scss */
 .footer {
   background-color: white;
   color: gray;
@@ -203,15 +219,15 @@ body {
   position: relative;
   z-index: 1;
 }
-/* line 152, ../sass/screen.scss */
+/* line 160, ../sass/screen.scss */
 .footer p, .footer a, .footer div, .footer ul, .footer li, .footer a {
   margin: 2px;
 }
-/* line 155, ../sass/screen.scss */
+/* line 163, ../sass/screen.scss */
 .footer a {
   color: gray;
 }
-/* line 158, ../sass/screen.scss */
+/* line 166, ../sass/screen.scss */
 .footer ul {
   display: flex;
   flex-wrap: wrap;
@@ -219,20 +235,20 @@ body {
 }
 
 @media screen and (max-width: 400px) {
-  /* line 169, ../sass/screen.scss */
+  /* line 177, ../sass/screen.scss */
   .header h2, .header p {
     font-size: 0.8em;
   }
 
-  /* line 173, ../sass/screen.scss */
+  /* line 181, ../sass/screen.scss */
   .search-div {
     font-size: 0.8em;
   }
-  /* line 175, ../sass/screen.scss */
+  /* line 183, ../sass/screen.scss */
   .search-div input {
     width: 100px;
   }
-  /* line 178, ../sass/screen.scss */
+  /* line 186, ../sass/screen.scss */
   .search-div button {
     width: 55px;
     font-size: 0.8em;
