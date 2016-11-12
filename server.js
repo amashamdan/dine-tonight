@@ -116,7 +116,7 @@ MongoClient.connect(mongoUrl, function(err, db) {
 		app.post("/action/:name", function(req, res) {
 			restaurants.update(
 				{"name": req.params.name, "city": cityGlobal},
-				{"$inc": {"count": 1}, "$push": {"people": req.user.displayName}},
+				{"$inc": {"count": 1}, "$addToSet": {"people": req.user.displayName}},
 				{"upsert": true},
 				function(err, results) {
 					if (results.result.nModified == 1 || "upserted" in results.result) {
@@ -170,11 +170,10 @@ MongoClient.connect(mongoUrl, function(err, db) {
 function renderResults(req, res, error, user, username, resultsGlobal, cityGlobal, restaurants) {
 	restaurants.find({}).toArray(function(error, allItems){
 		for (var result in resultsGlobal) {
+			resultsGlobal[result].people = ["None so far, be the first and click on 'I want to go'"];
 			for (var item in allItems) {
 				if (resultsGlobal[result].name == allItems[item].name) {
-					if (allItems[item].people.length == 0) {
-						resultsGlobal[result].people = ["None so far"];
-					} else {
+					if (allItems[item].people.length > 0) {
 						resultsGlobal[result].people = allItems[item].people;
 					}
 				}
