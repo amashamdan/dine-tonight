@@ -158,6 +158,12 @@ MongoClient.connect(mongoUrl, function(err, db) {
     			/* redirects the user to the last page where the request originated from. */
     			res.redirect(lastPage);
   		});
+
+		/* Facebook logout request. */
+  		app.get('/logout', function(req, res){
+		    req.logout();
+		    res.redirect("/");
+		});
 	}
 });
 
