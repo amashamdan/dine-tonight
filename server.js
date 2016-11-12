@@ -122,16 +122,38 @@ MongoClient.connect(mongoUrl, function(err, db) {
 			});
 		});
 
-		app.get("/action/:name", function(req, res) {
+		app.post("/action/:name", function(req, res) {
 			restaurants.update(
 				{"name": req.params.name, "city": cityGlobal},
 				{"$inc": {"count": 1}, "$push": {"people": req.user.displayName}},
 				{"upsert": true},
-				function () {
-					res.redirect("/results");
+				function(err, results) {
+					if (results.result.nModified == 1 || "upserted" in results.result) {
+						res.status(201);
+						res.end();
+					} else {
+						res.status(404);
+						res.end();
+					}
 				}
 			);
 		});
+
+		app.post("/cancel/:name", function(req, res) {
+			restaurants.update(
+				{"name": req.params.name, "city": cityGlobal},
+				{"$inc": {"count": -1}, "$pull": {"people": req.user.displayName}},
+				function(err, results) {
+					if (results.result.nModified == 1) {
+						res.status(201);
+						res.end();
+					} else {
+						res.status(404);
+						res.end();
+					}
+				}
+			);
+		})
 
 		var lastPage = "/";
 		function savePage(req, res, next) {
@@ -145,8 +167,6 @@ MongoClient.connect(mongoUrl, function(err, db) {
     			/* redirects the user to the last page where the request originated from. */
     			res.redirect(lastPage);
   		});
-
-
 	}
 });
 
