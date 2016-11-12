@@ -47,6 +47,9 @@
 						</div>
 							
 						<div class="more-info">
+							<% if (user) { %>
+							<p><strong>People going: </strong> <%= results[item].people %></p>
+							<% } %>
 							<p><strong>A sample review:</strong> <span style="font-style: italic"><%= results[item].snippet %></span></p>
 							<p><strong>Phone: </strong><%= results[item].phone %></p>
 							<% if (!results[item].status) { %>
