@@ -67,19 +67,7 @@ MongoClient.connect(mongoUrl, function(err, db) {
 		});
 
 		app.get("/results", function(req, res) {
-			restaurants.find({"city": cityGlobal, "people": req.user.displayName}).toArray(function(err, items) {
-				for (var restaurant in resultsGlobal) {
-					resultsGlobal[restaurant].isGoing = false;
-				}
-				for (var item in items) {
-					for (var restaurant in resultsGlobal) {
-						if (resultsGlobal[restaurant].name == items[item].name) {
-							resultsGlobal[restaurant].isGoing = true;
-						} 
-					}
-				}
-				res.render("results.ejs", {results: resultsGlobal, error: undefined, user: req.user});
-			});
+			renderResults(req, res, undefined, req.user, req.user.displayName, resultsGlobal, cityGlobal, restaurants);
 		});
 
 		app.post("/results", parser, function(req, res) {
@@ -108,14 +96,17 @@ MongoClient.connect(mongoUrl, function(err, db) {
 					business.address = data.businesses[item].location.display_address;
 					results.push(business);
 				}
-				if (req.user) {
-					var user = req.user;
-				} else {
-					var user = undefined;
-				}
+
 				resultsGlobal = results;
 				cityGlobal = req.body.location;
-				res.render("results.ejs", {results: results, error: undefined, user: user});
+				if (req.user) {
+					//var user = req.user;
+					renderResults(req, res, undefined, req.user, req.user.displayName, resultsGlobal, cityGlobal, restaurants);
+				} else {
+					var user = undefined;
+					res.render("results.ejs", {results: results, error: undefined, user: user});
+				}
+
 			}).catch(function(err) {
 				var errorText = JSON.parse(err.data).error.text;
 				res.render("results.ejs", {results: undefined, errorText: errorText, user: undefined});
@@ -170,7 +161,21 @@ MongoClient.connect(mongoUrl, function(err, db) {
 	}
 });
 
-
+function renderResults(req, res, error, user, username, resultsGlobal, cityGlobal, restaurants) {
+	restaurants.find({"city": cityGlobal, "people": username}).toArray(function(err, items) {
+		for (var restaurant in resultsGlobal) {
+			resultsGlobal[restaurant].isGoing = false;
+		}
+		for (var item in items) {
+			for (var restaurant in resultsGlobal) {
+				if (resultsGlobal[restaurant].name == items[item].name) {
+					resultsGlobal[restaurant].isGoing = true;
+				} 
+			}
+		}
+		res.render("results.ejs", {results: resultsGlobal, error: error, user: user});
+	});
+}
 
 // port 8080 used for localhost during development.
 var port = Number(process.env.PORT || 443)
