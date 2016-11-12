@@ -14,7 +14,16 @@
 		</div>
 		<div class="results-div">
 			<% if (results) { %>
-				<p>Here is what our machines found for you. Hope you find something you like!</p>
+				<div class="results-header">
+					<span>Here is what our machines found for you. Hope you find something you like!</span>
+					<div>
+						<a href="/"><button class="button">Home</button></a>
+						<% if (user) { %>
+						<a href="/logout"><button class="facebook">Logout</button></a>
+						<% } %>
+					</div>
+				</div>
+					
 				<% for (var item in results) { %>
 					<div class="result" id=<%- JSON.stringify(results[item].name) %>>
 						<div class="flex-wrapper">
