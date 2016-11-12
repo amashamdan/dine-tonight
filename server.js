@@ -168,18 +168,31 @@ MongoClient.connect(mongoUrl, function(err, db) {
 });
 
 function renderResults(req, res, error, user, username, resultsGlobal, cityGlobal, restaurants) {
-	restaurants.find({"city": cityGlobal, "people": username}).toArray(function(err, items) {
-		for (var restaurant in resultsGlobal) {
-			resultsGlobal[restaurant].isGoing = false;
-		}
-		for (var item in items) {
-			for (var restaurant in resultsGlobal) {
-				if (resultsGlobal[restaurant].name == items[item].name) {
-					resultsGlobal[restaurant].isGoing = true;
-				} 
+	restaurants.find({}).toArray(function(error, allItems){
+		for (var result in resultsGlobal) {
+			for (var item in allItems) {
+				if (resultsGlobal[result].name == allItems[item].name) {
+					if (allItems[item].people.length == 0) {
+						resultsGlobal[result].people = ["None so far"];
+					} else {
+						resultsGlobal[result].people = allItems[item].people;
+					}
+				}
 			}
 		}
-		res.render("results.ejs", {results: resultsGlobal, error: error, user: user});
+		restaurants.find({"city": cityGlobal, "people": username}).toArray(function(err, items) {
+			for (var restaurant in resultsGlobal) {
+				resultsGlobal[restaurant].isGoing = false;
+			}
+			for (var item in items) {
+				for (var restaurant in resultsGlobal) {
+					if (resultsGlobal[restaurant].name == items[item].name) {
+						resultsGlobal[restaurant].isGoing = true;
+					} 
+				}
+			}
+			res.render("results.ejs", {results: resultsGlobal, error: error, user: user});
+		});
 	});
 }
 
