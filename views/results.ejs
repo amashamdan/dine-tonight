@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <head>
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
-	<title>Dine Tonight</title>
+	<title>Fine Dining</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<link rel="stylesheet" href="stylesheets/screen.css"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -9,8 +9,8 @@
 <body>
 	<div class="container">
 		<div class="header">
-			<a href="/"><h2>DINE TONIGHT</h2></a>
-			<p>Plan your dinner with your friends</p>
+			<a href="/"><h2>FINE DINING</h2></a>
+			<p>Share your dining interests with others!</p>
 		</div>
 		<div class="results-div">
 			<% if (results) { %>
@@ -35,7 +35,7 @@
 						</div>
 						<div class="buttons-wrapper">
 							<% if (!user) { %>
-								<a href="/login"><button class="facebook">Login to plan</button></a><br/>
+								<a href="/login"><button class="facebook">Login to explore</button></a><br/>
 							<% } else { %>
 								<% if (results[item].isGoing) { %>
 									<button class="will-not-go">Don't wanna go</button><br/>
@@ -48,7 +48,15 @@
 							
 						<div class="more-info">
 							<% if (user) { %>
-							<p><strong>People going: </strong> <%= results[item].people %></p>
+							<p><strong>People who like going there: </strong>
+							<% for (var i in results[item].people) { %>
+							<%= results[item].people[i] %>.
+							<% if (i == 9) {break} %>
+							<% } %>
+							<% if (results[item].people.length > 10) { %>
+							(and <%= results[item].people.length - 10 %> more)
+							<% } %>
+							</p>
 							<% } %>
 							<p><strong>A sample review:</strong> <span style="font-style: italic"><%= results[item].snippet %></span></p>
 							<p><strong>Phone: </strong><%= results[item].phone %></p>
