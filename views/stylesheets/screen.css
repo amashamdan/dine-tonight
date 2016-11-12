@@ -31,38 +31,37 @@ body {
   border: 1px solid gray;
   display: none;
   margin: 15px 5px 0 5px;
-  height: 70px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
-/* line 50, ../sass/screen.scss */
+/* line 49, ../sass/screen.scss */
 .result img {
   width: 70px;
   height: 70px;
   margin-right: 15px;
 }
-/* line 55, ../sass/screen.scss */
+/* line 54, ../sass/screen.scss */
 .result .flex-wrapper {
   margin: 0;
 }
-/* line 58, ../sass/screen.scss */
+/* line 57, ../sass/screen.scss */
 .result p {
   margin: 10px 0 10px 0;
 }
 
-/* line 65, ../sass/screen.scss */
+/* line 64, ../sass/screen.scss */
 .flex-wrapper {
   display: flex;
   flex-wrap: wrap;
 }
-/* line 68, ../sass/screen.scss */
+/* line 67, ../sass/screen.scss */
 .flex-wrapper a {
   color: gray;
   text-decoration: none;
 }
 
-/* line 73, ../sass/screen.scss */
+/* line 72, ../sass/screen.scss */
 .more-info {
   display: none;
   width: 100%;
@@ -75,18 +74,19 @@ body {
   border: 1px solid black;
   font-size: 0.9em;
 }
-/* line 81, ../sass/screen.scss */
+/* line 80, ../sass/screen.scss */
 .more-info a {
   color: white;
 }
 
-/* line 88, ../sass/screen.scss */
+/* line 87, ../sass/screen.scss */
 .results-div {
   background-color: white;
   color: gray;
   padding: 15px;
   margin: 15px;
   font-size: 0.9em;
+  opacity: 0.85;
   display: none;
   z-index: 3;
 }
@@ -241,23 +241,69 @@ body {
   justify-content: space-around;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 770px) {
   /* line 182, ../sass/screen.scss */
-  .header h2, .header p {
+  .results-header div {
+    text-align: center;
+    width: 100%;
+  }
+  /* line 185, ../sass/screen.scss */
+  .results-header div button {
+    width: 40%;
+  }
+}
+@media screen and (max-width: 550px) {
+  /* line 194, ../sass/screen.scss */
+  .header h2, .header p, .results-header h2, .results-header p {
     font-size: 0.8em;
   }
 
-  /* line 186, ../sass/screen.scss */
+  /* line 198, ../sass/screen.scss */
   .search-div {
     font-size: 0.8em;
   }
-  /* line 188, ../sass/screen.scss */
-  .search-div input {
-    width: 100px;
-  }
-  /* line 191, ../sass/screen.scss */
+  /* line 200, ../sass/screen.scss */
   .search-div button {
     width: 55px;
     font-size: 0.8em;
+  }
+
+  /* line 205, ../sass/screen.scss */
+  #search-input {
+    width: 110px;
+  }
+
+  /* line 209, ../sass/screen.scss */
+  .pages li {
+    list-style: none;
+  }
+
+  /* line 214, ../sass/screen.scss */
+  .result p {
+    font-size: 0.8em;
+    margin: 5px 5px 5px 0;
+  }
+  /* line 218, ../sass/screen.scss */
+  .result img {
+    width: 50px;
+    height: 50px;
+    margin-right: 5px;
+  }
+
+  /* line 224, ../sass/screen.scss */
+  .buttons-wrapper {
+    padding: 0 5px 0 5px;
+    width: 100%;
+  }
+  /* line 227, ../sass/screen.scss */
+  .buttons-wrapper button {
+    font-size: 0.7em;
+    width: 100%;
+    margin: 1px;
+  }
+
+  /* line 233, ../sass/screen.scss */
+  .more-info {
+    padding: 5px;
   }
 }
