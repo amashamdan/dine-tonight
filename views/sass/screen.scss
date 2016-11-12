@@ -37,6 +37,11 @@ body {
 		cursor: pointer;
 	}
 }
+.results-header {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
 .result {
 	border: 1px solid gray;
 	display: none;
