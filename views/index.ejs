@@ -4,13 +4,34 @@
 	<title>Fine Dining</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<link rel="stylesheet" href="stylesheets/screen.css"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/css-social-buttons/1.2.0/css/zocial.css"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <body>
+	<!-- Facebook JavaScript SDK, used to enable share functionality. According to the quick setup guide it should be at the top of the body. It loads the sdk asynchronously. --> 
+	<script>
+	window.fbAsyncInit = function() {
+	    FB.init({
+	    	appId      : '363941330617910',
+	    	xfbml      : true,
+	    	version    : 'v2.8'
+	    });
+	    FB.AppEvents.logPageView();
+	};
+
+	(function(d, s, id){
+	    var js, fjs = d.getElementsByTagName(s)[0];
+	    if (d.getElementById(id)) {return;}
+	    js = d.createElement(s); js.id = id;
+	    js.src = "//connect.facebook.net/en_US/sdk.js";
+	    fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+	</script>
 	<div class="container">
 		<div class="header">
 			<h2>FINE DINING</h2>
 			<p>Share your dining interests with others!</p>
+			<button class="zocial facebook" id="share">Share</button>
 		</div>
 		<div class="search-div">
 			<h3>Start Here</h3>
