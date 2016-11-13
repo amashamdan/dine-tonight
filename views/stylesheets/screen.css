@@ -20,6 +20,32 @@ body {
 }
 
 /* line 40, ../sass/screen.scss */
+.header {
+  background-color: white;
+  color: gray;
+  padding: 15px;
+  margin: 15px;
+  opacity: 0.8;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+/* line 46, ../sass/screen.scss */
+.header a {
+  text-decoration: none;
+  color: gray;
+}
+/* line 50, ../sass/screen.scss */
+.header h2 {
+  margin: 0;
+}
+/* line 53, ../sass/screen.scss */
+.header p {
+  font-style: italic;
+  font-size: 0.8em;
+}
+
+/* line 58, ../sass/screen.scss */
 #share {
   height: 20px;
   padding: 0;
@@ -27,79 +53,27 @@ body {
   width: 70px;
 }
 
-/* line 46, ../sass/screen.scss */
-.results-header {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-/* line 51, ../sass/screen.scss */
-.result {
-  border: 1px solid gray;
-  display: none;
-  margin: 15px 5px 0 5px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-/* line 55, ../sass/screen.scss */
-.result img {
-  width: 70px;
-  height: 70px;
-  margin-right: 15px;
-}
-/* line 60, ../sass/screen.scss */
-.result .flex-wrapper {
-  margin: 0;
-}
-/* line 63, ../sass/screen.scss */
-.result p {
-  margin: 10px 0 10px 0;
-}
-
-/* line 70, ../sass/screen.scss */
-.flex-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-}
-/* line 73, ../sass/screen.scss */
-.flex-wrapper a {
-  color: gray;
-  text-decoration: none;
-}
-
-/* line 78, ../sass/screen.scss */
-.more-info {
-  display: none;
-  width: 100%;
-  background-color: #0F7173;
-  color: white;
-  position: relative;
-  z-index: 6;
-  padding: 20px;
-  border-radius: 5px;
-  border: 1px solid black;
-  font-size: 0.9em;
-}
-/* line 86, ../sass/screen.scss */
-.more-info a {
-  color: white;
-}
-
-/* line 93, ../sass/screen.scss */
-.results-div {
+/* line 64, ../sass/screen.scss */
+.search-div {
   background-color: white;
   color: gray;
   padding: 15px;
   margin: 15px;
-  font-size: 0.9em;
-  opacity: 0.85;
-  display: none;
-  z-index: 3;
+  opacity: 0.8;
+  text-align: center;
 }
 
-/* line 100, ../sass/screen.scss */
+/* line 69, ../sass/screen.scss */
+#search-input {
+  padding: 4px;
+}
+
+/* line 72, ../sass/screen.scss */
+.radio {
+  margin-top: 10px;
+}
+
+/* line 75, ../sass/screen.scss */
 .button {
   border: none;
   padding: 5px;
@@ -112,7 +86,79 @@ body {
   cursor: pointer;
 }
 
-/* line 105, ../sass/screen.scss */
+/* line 80, ../sass/screen.scss */
+.results-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* line 85, ../sass/screen.scss */
+.result {
+  border: 1px solid gray;
+  display: none;
+  margin: 15px 5px 0 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+/* line 89, ../sass/screen.scss */
+.result img {
+  width: 70px;
+  height: 70px;
+  margin-right: 15px;
+}
+/* line 94, ../sass/screen.scss */
+.result .flex-wrapper {
+  margin: 0;
+}
+/* line 97, ../sass/screen.scss */
+.result p {
+  margin: 10px 0 10px 0;
+}
+
+/* line 104, ../sass/screen.scss */
+.flex-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+/* line 107, ../sass/screen.scss */
+.flex-wrapper a {
+  color: gray;
+  text-decoration: none;
+}
+
+/* line 112, ../sass/screen.scss */
+.more-info {
+  display: none;
+  width: 100%;
+  background-color: #0F7173;
+  color: white;
+  position: relative;
+  z-index: 6;
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid black;
+  font-size: 0.9em;
+}
+/* line 120, ../sass/screen.scss */
+.more-info a {
+  color: white;
+}
+
+/* line 127, ../sass/screen.scss */
+.results-div {
+  background-color: white;
+  color: gray;
+  padding: 15px;
+  margin: 15px;
+  font-size: 0.9em;
+  opacity: 0.85;
+  display: none;
+  z-index: 3;
+}
+
+/* line 134, ../sass/screen.scss */
 .will-go {
   border: none;
   padding: 5px;
@@ -128,7 +174,7 @@ body {
   cursor: pointer;
 }
 
-/* line 113, ../sass/screen.scss */
+/* line 142, ../sass/screen.scss */
 .will-not-go {
   border: none;
   padding: 5px;
@@ -144,7 +190,7 @@ body {
   cursor: pointer;
 }
 
-/* line 121, ../sass/screen.scss */
+/* line 150, ../sass/screen.scss */
 .more-info-button {
   border: none;
   padding: 5px;
@@ -160,7 +206,7 @@ body {
   cursor: pointer;
 }
 
-/* line 129, ../sass/screen.scss */
+/* line 158, ../sass/screen.scss */
 .facebook {
   border: none;
   padding: 5px;
@@ -174,52 +220,6 @@ body {
 /* line 36, ../sass/screen.scss */
 .facebook:hover {
   cursor: pointer;
-}
-
-/* line 137, ../sass/screen.scss */
-.header {
-  background-color: white;
-  color: gray;
-  padding: 15px;
-  margin: 15px;
-  opacity: 0.8;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-/* line 143, ../sass/screen.scss */
-.header a {
-  text-decoration: none;
-  color: gray;
-}
-/* line 147, ../sass/screen.scss */
-.header h2 {
-  margin: 0;
-}
-/* line 150, ../sass/screen.scss */
-.header p {
-  font-style: italic;
-  font-size: 0.8em;
-}
-
-/* line 155, ../sass/screen.scss */
-.search-div {
-  background-color: white;
-  color: gray;
-  padding: 15px;
-  margin: 15px;
-  opacity: 0.8;
-  text-align: center;
-}
-
-/* line 160, ../sass/screen.scss */
-#search-input {
-  padding: 4px;
-}
-
-/* line 163, ../sass/screen.scss */
-.radio {
-  margin-top: 10px;
 }
 
 /* line 166, ../sass/screen.scss */
