@@ -8,71 +8,91 @@
 </head>
 <body>
 	<div class="container">
+		<!-- Header section -->
 		<div class="header">
 			<a href="/"><h2>FINE DINING</h2></a>
 			<p>Share your dining interests with others!</p>
 		</div>
+		<!-- Results section -->
 		<div class="results-div">
+			<!-- If the search resturned results, the following is added. -->
 			<% if (results) { %>
-				<div class="results-header">
-					<span>Here is what our machines found for you. Hope you find something you like!</span>
-					<div>
-						<a href="/"><button class="button">Home</button></a>
-						<% if (user) { %>
-						<a href="/logout"><button class="facebook">Logout</button></a>
-						<% } %>
+			<div class="results-header">
+				<span>Here is what our machines found for you. Hope you find something you like!</span>
+				<div>
+					<!-- Home button is always shown, while logout button is only shown if the user is logged in. -->
+					<a href="/"><button class="button">Home</button></a>
+					<% if (user) { %>
+					<a href="/logout"><button class="facebook">Logout</button></a>
+					<% } %>
+				</div>
+			</div>
+			<!-- The for loop loops through the results and adds them to the page. -->	
+			<% for (var item in results) { %>
+			<!-- Each search result is placed in a result div. The id of the div is the same as the result's name. -->
+			<div class="result" id=<%- JSON.stringify(results[item].name) %>>
+				<!-- wrapper div used for styling. -->
+				<div class="flex-wrapper">
+					<!-- The img src is the same as image link retreived from the server. -->
+					<img src=<%= results[item].image %>>
+					<div class="wrapper">
+						<!-- Result's name is enclosed in a link with href provided from yelp by the server. -->
+						<a target="blank" href=<%- JSON.stringify(results[item].url) %>><p><%= results[item].name %></p></a>
+						<!-- Rating and number of views inserted. -->
+						<p>Rating: <%= results[item].rating %> <span style="font-size: 0.8em">(<%= results[item].reviews %> reviews)</span></p>
 					</div>
 				</div>
-					
-				<% for (var item in results) { %>
-					<div class="result" id=<%- JSON.stringify(results[item].name) %>>
-						<div class="flex-wrapper">
-							<img src=<%= results[item].image %>>
-							<div class="wrapper">
-								<a target="blank" href=<%- JSON.stringify(results[item].url) %>><p><%= results[item].name %></p></a>
-								<p>Rating: <%= results[item].rating %> <span style="font-size: 0.8em">(<%= results[item].reviews %> reviews)</span></p>
-							</div>
-						</div>
-						<div class="buttons-wrapper">
-							<% if (!user) { %>
-								<a href="/login"><button class="facebook">Login to explore</button></a><br/>
-							<% } else { %>
-								<% if (results[item].isGoing) { %>
-									<button class="will-not-go">Don't wanna go</button><br/>
-								<% } else { %>
-									<button class="will-go">I want to go</button><br/>
-								<% } %>
-							<% } %>
-							<button class="more-info-button">Expand information</button>
-						</div>
-							
-						<div class="more-info">
-							<% if (user) { %>
-							<p><strong>People who like going there: </strong>
-							<% for (var i in results[item].people) { %>
-							<%= results[item].people[i] %>.
-							<% if (i == 9) {break} %>
-							<% } %>
-							<% if (results[item].people.length > 10) { %>
-							(and <%= results[item].people.length - 10 %> more)
-							<% } %>
-							</p>
-							<% } %>
-							<p><strong>A sample review:</strong> <span style="font-style: italic"><%= results[item].snippet %></span></p>
-							<p><strong>Phone: </strong><%= results[item].phone %></p>
-							<% if (!results[item].status) { %>
-								<p>NOW OPEN</p>
-							<% } else { %>
-								<p>NOW CLOSED</p>
-							<% } %>
-							<p><strong>Address: </strong><%= results[item].address %></p>
-							<p><a href=<%= results[item].url %> target="blank"><%= results[item].name %>'s page at Yelp!</a></p>
-						</div>
-					</div>
-				<% } %>
+				<div class="buttons-wrapper">
+					<!-- If no user is logged in, the login button is shown at each result. -->
+					<% if (!user) { %>
+					<a href="/login"><button class="facebook">Login to explore</button></a><br/>
+					<!-- If the user is logged in: -->
+					<% } else { %>
+					<!-- It is checked to see isGoing is true or not. True means the user already liked to go and thus given the option to not go by "Don't wanna go button." -->
+					<% if (results[item].isGoing) { %>
+					<button class="will-not-go">Don't wanna go</button><br/>
+					<!-- If isGoing is false, it's the other way around. -->
+					<% } else { %>
+					<button class="will-go">I want to go</button><br/>
+					<% } %>
+					<% } %>
+					<button class="more-info-button">Expand information</button>
+				</div>
+				<!-- This div appears when the user clicks "Expand information" button. -->	
+				<div class="more-info">
+					<!-- If the user signed in, he will also see a list of the people who like to go to the same place. -->
+					<% if (user) { %>
+					<p><strong>People who like going there: </strong>
+					<!-- This loops through the list if people going to this place and adds up to ten of them. -->
+					<% for (var i in results[item].people) { %>
+					<%= results[item].people[i] %>.
+					<% if (i == 9) {break} %>
+					<% } %>
+					<!-- If there is more than 10 people. The remaining number of people is shown between brackets. -->
+					<% if (results[item].people.length > 10) { %>
+					(and <%= results[item].people.length - 10 %> more)
+					<% } %>
+					</p>
+					<% } %>
+					<!-- Other information from yelp are listed. -->
+					<p><strong>A sample review:</strong> <span style="font-style: italic"><%= results[item].snippet %></span></p>
+					<p><strong>Phone: </strong><%= results[item].phone %></p>
+					<!-- Check what to display, NOW OPEN or NOW CLOSED based on status value retreived from the server.  -->
+					<% if (!results[item].status) { %>
+					<p>NOW OPEN</p>
+					<% } else { %>
+					<p>NOW CLOSED</p>
+					<% } %>
+					<p><strong>Address: </strong><%= results[item].address %></p>
+					<p><a href=<%= results[item].url %> target="blank"><%= results[item].name %>'s page at Yelp!</a></p>
+				</div>
+			</div>
+			<% } %>
+			<!-- If no results are returned, the following message is displayed. -->
 			<% } else if (errorText) { %>
-				<p>OK... There seems to be a problem... Propably you live at the end of the world... We suggest you move to another city! Anyway, here is what our machines are telling us:</p>
-				<li><%= errorText %></li>
+			<p>OK... There seems to be a problem... Propably you live at the end of the world... We suggest you move to another city! Anyway, here is what our machines are telling us:</p>
+			<!-- Error message from yelp API. -->
+			<li><%= errorText %></li>
 			<% } %>
 		</div>
 		<!-- Footer section. -->
@@ -86,7 +106,7 @@
 					<li><a href="https://github.com/amashamdan" target="blank">Github</a></li>
 					<li><a href="http://codepen.io/amashamdan/" target="blank">CodePen</a></li>
 				</ul>
-				<span style="font-size:0.7em">Copyright © Dine Tonight 2016. All Rights Reserved</span>
+				<span style="font-size:0.7em">Copyright © Fine Dining 2016. All Rights Reserved</span>
 			</div>
 		</div>
 	</div>
