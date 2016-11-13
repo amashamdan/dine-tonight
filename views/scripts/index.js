@@ -19,6 +19,13 @@ $(document).ready(function() {
 			$("#search-form").submit();
 		});
 	});
+	document.getElementById('share').onclick = function() {
+		FB.ui({
+	    	method: 'share',
+	    	display: 'popup',
+	    	href: "http://fine-dining.herokuapp.com"
+		}, function(response){});
+	}
 });
 
 
