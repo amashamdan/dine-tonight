@@ -23,7 +23,7 @@ passport.use(new Strategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
     /* Do not redirect to root. return root uses another function needed for authentication, that function cannot work with root. */
-    callbackURL: 'http://fine-dining.herokuapp.com/login/return'
+    callbackURL: 'https://fine-dining.herokuapp.com/login/return'
   },
   function(accessToken, refreshToken, profile, cb) {
   	/* Comments below from Passport example code. */

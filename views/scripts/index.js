@@ -27,7 +27,7 @@ $(document).ready(function() {
 		FB.ui({
 	    	method: 'share',
 	    	display: 'popup',
-	    	href: "http://fine-dining.herokuapp.com"
+	    	href: "https://fine-dining.herokuapp.com"
 		}, function(response){});
 	}
 });
